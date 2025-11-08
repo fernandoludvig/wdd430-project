@@ -1,0 +1,10 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="16" fill="#2563EB"/>
+  <path d="M16 20C16 17.7909 17.7909 16 20 16H44C46.2091 16 48 17.7909 48 20V44C48 46.2091 46.2091 48 44 48H20C17.7909 48 16 46.2091 16 44V20Z" fill="white" fill-opacity="0.15"/>
+  <path d="M22 24H34C37.3137 24 40 26.6863 40 30V42" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M22 32H30C32.2091 32 34 33.7909 34 36V42" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="24" cy="42" r="3" fill="white"/>
+  <circle cx="34" cy="42" r="3" fill="white"/>
+  <text x="50%" y="20" text-anchor="middle" fill="white" font-size="12" font-family="Inter, Arial, sans-serif" font-weight="600">StudyHub</text>
+</svg>
+
