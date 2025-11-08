@@ -6,49 +6,49 @@
 
 </div>
 
-## Equipe
+## Team
 
-- Fernando Ludvig (Líder)
+- Fernando Ludvig (Lead)
 - Cynthia Moyo
 - Ganiyat Bakare
 - Saul Carracelas
 
-## Visão Geral
+## Overview
 
-StudyHub é uma plataforma colaborativa para estudantes e mentores co-criarem jornadas de aprendizado. O objetivo é centralizar grupos de estudo, conteúdos curados, metas compartilhadas e comunicação em tempo real para que equipes acadêmicas mantenham ritmo e transparência em suas entregas.
+StudyHub is a collaborative platform designed for students and mentors to co-create personalized learning journeys. It centralizes study groups, curated resources, shared goals and real-time communication so academic teams can stay aligned, accountable and motivated throughout every milestone.
 
-## Principais Recursos
+## Key Features
 
-1. Painel unificado com indicadores de progresso.  
-2. Gerenciamento de grupos com membros, reuniões e objetivos.  
-3. Agenda inteligente sincronizada com calendários externos.  
-4. Chat contextual por grupo e tópico de estudo.  
-5. Biblioteca de materiais com versionamento e filtros.  
-6. Trilha personalizada de atividades para cada equipe.  
-7. Sistema de metas, checkpoints e feedback contínuo.  
-8. Relatórios automatizados de participação e desempenho.  
-9. Notificações configuráveis por canal e prioridade.  
-10. Gamificação com conquistas, rankings e selo de destaque.  
-11. Perfis colaborativos com disponibilidade e habilidades.  
-12. Integrações com ferramentas acadêmicas e produtividade.
+1. Unified dashboard with progress indicators and quick insights  
+2. Study group management with membership, objectives and milestones  
+3. Smart scheduling synced with external calendars and reminders  
+4. Real-time chat organized by topic and study cohort  
+5. Resource library with version control and powerful filters  
+6. Personalized learning tracks tailored to each team’s goals  
+7. Goal setting, checkpoints and continuous feedback loops  
+8. Automated participation and performance reports  
+9. Configurable notifications by channel and priority  
+10. Gamification with achievements, leaderboards and badges  
+11. Collaborative profiles highlighting availability and skills  
+12. Integrations with academic and productivity tooling
 
-## Tema de Design
+## Design Guidelines
 
-- **Paleta:** Primário `#2563EB`, primário escuro `#1E40AF`, primário claro `#3B82F6`, acento `#7C3AED`, suporte (sucesso `#10B981`, aviso `#F59E0B`, erro `#EF4444`), base neutra `#F9FAFB` a `#111827`.  
-- **Tipografia:** Inter (sem serifa), títulos em peso 600/700, corpo em 400/500.  
-- **Estilo:** Layout com espaçamentos progressivos (4/8/16/24/32 px), cantos arredondados de 8 px, sombras suaves e gradientes leves sobre fundos claros.  
-- **Componentes:** Baseados em padrões shadcn/ui, com hierarquia visual clara, contrastes aprovados pelo OWASP e foco em acessibilidade (WCAG AA).
+- **Palette:** Primary `#2563EB`, dark primary `#1E40AF`, light primary `#3B82F6`, accent `#7C3AED`, plus success `#10B981`, warning `#F59E0B`, error `#EF4444`, and neutral range `#F9FAFB`–`#111827`  
+- **Typography:** Inter family, headings 600/700 weight, body 400/500  
+- **Visual style:** 4/8/16/24/32 px spacing scale, 8 px rounded corners, soft shadows and subtle gradients on light backgrounds  
+- **Components:** Based on shadcn/ui patterns with accessible hierarchy, OWASP-aligned contrasts and WCAG AA considerations
 
-## Stack Tecnológica
+## Tech Stack
 
 - Next.js 14+ (App Router)  
 - TypeScript  
 - Tailwind CSS v4  
 - PostgreSQL  
 - Prisma  
-- Clerk/Auth0 (autenticação)
+- Clerk/Auth0 for authentication
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 wdd430-project/
@@ -90,50 +90,50 @@ wdd430-project/
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
-├── next.config.ts
+├── next.config.mjs
 ├── postcss.config.js
 └── README.md
 ```
 
-## Primeiros Passos
+## Getting Started
 
-1. **Instalar dependências**
+1. **Install dependencies**
    ```bash
    npm install
    ```
-2. **Executar ambiente de desenvolvimento**
+2. **Run the development server**
    ```bash
    npm run dev
    ```
-3. **Acessar no navegador**
+3. **Open the app**
    ```
    http://localhost:3000
    ```
 
-## Fluxo de Desenvolvimento
+## Development Workflow
 
-- Branch principal protegida; use branches de feature.  
-- Pull requests acompanhadas por revisão cruzada.  
-- Execução de `npm run lint` antes de cada PR.  
-- Deploy contínuo via Vercel e integração com PostgreSQL gerenciado.  
-- Monitoramento de segurança seguindo OWASP Top 10 em toda nova funcionalidade.
+- Keep `main` protected; develop new work on feature branches  
+- Submit pull requests with peer review before merging  
+- Execute `npm run lint` prior to opening a PR  
+- Continuous delivery powered by Vercel with a managed PostgreSQL instance  
+- Apply OWASP Top 10 practices to every new capability
 
-## Cronograma do Projeto
+## Project Timeline
 
-| Semana | Entregas principais |
-| ------ | ------------------- |
-| 1 | Descoberta, requisitos e definição de personas |
-| 2 | Protótipos de interface e validação com stakeholders |
-| 3 | Implementação do MVP colaborativo e integrações base |
-| 4 | Testes, ajustes de performance e entrega final |
+| Week | Milestones |
+| ---- | ---------- |
+| 1 | Discovery, requirements and persona definition |
+| 2 | Interface prototypes and stakeholder validation |
+| 3 | Collaborative MVP implementation and core integrations |
+| 4 | Testing, performance refinements and final delivery |
 
-## Planejamento e Acompanhamento
+## Planning & Tracking
 
-- Quadro do projeto: [GitHub Project Board](https://github.com/users/fernandoludvig/projects/3/views/1)  
-- Reuniões semanais de sincronização e retrospectiva.  
-- Documentação contínua no repositório e registro de decisões arquiteturais.
+- Project board: [GitHub Project Board](https://github.com/users/fernandoludvig/projects/3/views/1)  
+- Weekly syncs and retrospectives  
+- Ongoing documentation and architectural decision records stored in-repo
 
 ---
 
-**Pronto para colaborar?** Clone o repositório, configure o ambiente e compartilhe insights com o time StudyHub.
+**Ready to collaborate?** Clone the repo, spin up the environment and help the StudyHub team build the next generation of collaborative learning.
 
