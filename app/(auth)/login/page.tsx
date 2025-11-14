@@ -1,41 +1,95 @@
+"use client";
+
+import { useState } from "react";
+
 import Link from "next/link";
-import { Input } from "@/components/ui/Input";
+
+import { useRouter } from "next/navigation";
+
+import Input from "@/components/ui/Input";
+
 import Button from "@/components/ui/Button";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setError("");
+
+    setIsLoading(true);
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    if (email && password) {
+      router.push("/dashboard");
+    } else {
+      setError("Please fill in all fields");
+    }
+
+    setIsLoading(false);
+  };
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-6 py-12">
-      <div className="w-full max-w-md space-y-6 rounded-3xl border border-gray-100 bg-white p-8 shadow-lg">
-        <div className="space-y-2 text-center">
-          <h1 className="text-2xl font-semibold text-gray-900">Welcome back</h1>
-          <p className="text-sm text-gray-500">
-            Sign in to StudyHub to resume collaborative sessions and keep every team aligned.
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-50 to-white px-4">
+      <div className="max-w-md w-full">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back</h1>
+          <p className="text-gray-600">Sign in to your StudyHub account</p>
+        </div>
+        <div className="bg-white rounded-lg shadow-lg p-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                {error}
+              </div>
+            )}
+            <Input
+              label="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              required
+            />
+            <Input
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              required
+            />
+            <div className="flex items-center justify-between text-sm">
+              <label className="flex items-center gap-2">
+                <input type="checkbox" className="rounded border-gray-300" />
+                <span className="text-gray-700">Remember me</span>
+              </label>
+              <Link href="#" className="text-blue-600 hover:text-blue-700">
+                Forgot password?
+              </Link>
+            </div>
+            <Button type="submit" disabled={isLoading} className="w-full">
+              {isLoading ? "Signing in..." : "Sign In"}
+            </Button>
+          </form>
+          <p className="text-center text-sm text-gray-600 mt-6">
+            Don&apos;t have an account?{" "}
+            <Link href="/register" className="text-blue-600 hover:text-blue-700 font-medium">
+              Sign up
+            </Link>
           </p>
         </div>
-        <form className="space-y-5">
-          <Input label="Email" type="email" placeholder="you@example.com" required />
-          <Input label="Password" type="password" placeholder="Enter your password" required />
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2 text-gray-500">
-              <input type="checkbox" className="h-4 w-4 rounded border-gray-200 text-blue-600 focus:ring-blue-500" />
-              Remember me
-            </label>
-            <Link href="#" className="text-primary hover:underline">
-              Forgot password
-            </Link>
-          </div>
-          <Button type="submit" className="w-full">
-            Sign in
-          </Button>
-        </form>
-        <p className="text-center text-sm text-gray-500">
-          New to StudyHub?{" "}
-          <Link href="/register" className="font-semibold text-primary hover:underline">
-            Create an account
-          </Link>
-        </p>
       </div>
     </div>
   );
 }
-

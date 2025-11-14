@@ -1,55 +1,117 @@
+"use client";
+
+import { useState } from "react";
+
+import { mockUsers, getUserStats } from "@/lib/mock-data";
+
 import Card from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
+
 import Button from "@/components/ui/Button";
 
+import Input from "@/components/ui/Input";
+
 export default function ProfilePage() {
+  const currentUser = mockUsers[0];
+
+  const stats = getUserStats(currentUser.id);
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [name, setName] = useState(currentUser.name);
+
+  const [bio, setBio] = useState(currentUser.bio || "");
+
+  const handleSave = () => {
+    alert("Profile updated!");
+    setIsEditing(false);
+  };
+
   return (
-    <div className="mx-auto max-w-3xl space-y-8">
-      <div>
-        <h1 className="text-3xl font-semibold text-gray-900">Profile</h1>
-        <p className="text-gray-500">Keep your personal details and collaboration preferences aligned with the team.</p>
-      </div>
+    <div className="space-y-6">
+      <h1 className="text-3xl font-semibold text-gray-900">Profile</h1>
+
       <Card>
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">Basic information</h2>
-          <Button size="sm">Save changes</Button>
-        </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          <Input label="Full name" placeholder="Enter your full name" defaultValue="Fernando Ludvig" />
-          <Input label="Email" type="email" placeholder="name@example.com" defaultValue="fernando@example.com" />
-          <Input label="Role" placeholder="Project role" defaultValue="Team lead" />
-          <Input label="Time zone" placeholder="Select your time zone" defaultValue="GMT-7" />
+        <div className="flex items-center gap-6">
+          <div className="h-24 w-24 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-2xl font-bold">
+            {currentUser.name.split(" ").map(n => n[0]).join("")}
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">{currentUser.name}</h2>
+            <p className="text-gray-600">{currentUser.email}</p>
+            <p className="text-sm text-gray-500 mt-1">
+              {currentUser.major} • {currentUser.university}
+            </p>
+          </div>
         </div>
       </Card>
+
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <p className="text-sm text-gray-600 mb-1">Groups</p>
+          <p className="text-2xl font-bold text-gray-900">{stats.totalGroups}</p>
+        </Card>
+        <Card>
+          <p className="text-sm text-gray-600 mb-1">Study Hours</p>
+          <p className="text-2xl font-bold text-gray-900">{stats.totalStudyHours.toFixed(1)}</p>
+        </Card>
+        <Card>
+          <p className="text-sm text-gray-600 mb-1">Goals Completed</p>
+          <p className="text-2xl font-bold text-gray-900">{stats.goalsCompleted}</p>
+        </Card>
+        <Card>
+          <p className="text-sm text-gray-600 mb-1">Achievements</p>
+          <p className="text-2xl font-bold text-gray-900">{stats.achievements}</p>
+        </Card>
+      </div>
+
       <Card>
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">Preferences</h2>
-          <Button size="sm" variant="outline">
-            Update preferences
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-gray-900">Personal Information</h3>
+          <Button onClick={() => isEditing ? handleSave() : setIsEditing(true)}>
+            {isEditing ? "Save" : "Edit"}
           </Button>
         </div>
-        <div className="grid gap-4">
-          <label className="flex items-center justify-between rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-600">
-            Email notifications
-            <span className="inline-flex h-6 w-12 items-center rounded-full bg-primary/20 px-1 text-xs font-semibold text-primary">
-              On
-            </span>
-          </label>
-          <label className="flex items-center justify-between rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-600">
-            Weekly summaries
-            <span className="inline-flex h-6 w-12 items-center justify-center rounded-full bg-neutral-100 px-1 text-xs font-semibold text-neutral-500">
-              Off
-            </span>
-          </label>
-          <label className="flex items-center justify-between rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-600">
-            Goal alerts
-            <span className="inline-flex h-6 w-12 items-center rounded-full bg-success/20 px-1 text-xs font-semibold text-success">
-              On
-            </span>
-          </label>
-        </div>
+
+        {isEditing ? (
+          <div className="space-y-4">
+            <Input
+              label="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Bio
+              </label>
+              <textarea
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                rows={4}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <div>
+              <p className="text-sm text-gray-600">Name</p>
+              <p className="font-medium text-gray-900">{currentUser.name}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Bio</p>
+              <p className="font-medium text-gray-900">{currentUser.bio || "No bio yet"}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">University</p>
+              <p className="font-medium text-gray-900">{currentUser.university}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Major</p>
+              <p className="font-medium text-gray-900">{currentUser.major}</p>
+            </div>
+          </div>
+        )}
       </Card>
     </div>
   );
 }
-
